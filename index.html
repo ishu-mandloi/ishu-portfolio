@@ -23,16 +23,18 @@ h1{font-size:clamp(58px,11vw,150px);line-height:.85;letter-spacing:-6px;max-widt
 .title{font-size:clamp(38px,6vw,76px);letter-spacing:-3px;margin-bottom:45px}
 .aboutgrid{display:grid;grid-template-columns:1fr 1.4fr;gap:70px;border-top:1px solid var(--line);padding-top:35px}
 .aboutgrid p{font-size:22px;color:#bbb;max-width:720px}
-.services{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line)}
+.services{display:grid;grid-template-columns:1fr;border-top:1px solid var(--line)}
 .service{padding:30px 10px;border-bottom:1px solid var(--line);font-size:25px}.service span{display:block;color:#666;font-size:12px;letter-spacing:2px;margin-bottom:8px}
 .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 .project{aspect-ratio:16/10;background:linear-gradient(135deg,#171717,#0d0d0d);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:end;padding:25px;position:relative;overflow:hidden}
 .project:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,#3333,transparent 45%)}
+.project video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.project.has-video:before{background:linear-gradient(to top,#000d,transparent 55%);z-index:1}
 .project>*{position:relative}.tag{font-size:11px;letter-spacing:2px;color:#777;text-transform:uppercase}.project h3{font-size:27px;margin-top:5px}
 .tools{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:35px 0}.tool{font-size:32px;font-weight:700}
 .contact{text-align:center;min-height:70vh;display:flex;flex-direction:column;justify-content:center}.contact .title{margin-bottom:20px}.email{font-size:clamp(20px,3vw,36px);margin:25px 0;color:#ddd}
 footer{padding:30px 7%;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#666;font-size:12px}
-@media(max-width:700px){.navlinks{display:none}section{padding:85px 6%}.hero{padding-top:100px}h1{letter-spacing:-3px}.aboutgrid,.projects,.services{grid-template-columns:1fr;gap:30px}.aboutgrid p{font-size:18px}.service{font-size:22px}.tools{display:block}.tool{margin:12px 0}footer{display:block}footer div+div{margin-top:8px}}
+@media(max-width:700px){.navlinks{display:none}section{padding:85px 6%}.hero{padding-top:100px}h1{letter-spacing:-3px}.aboutgrid,.projects{grid-template-columns:1fr;gap:30px}.aboutgrid p{font-size:18px}.service{font-size:22px}.tools{display:block}.tool{margin:12px 0}footer{display:block}footer div+div{margin-top:8px}}
 </style>
 </head>
 <body>
@@ -52,7 +54,7 @@ footer{padding:30px 7%;border-top:1px solid var(--line);display:flex;justify-con
 <div class="eyebrow">01 — About</div>
 <div class="aboutgrid">
 <h2 class="title">A creative mind<br>behind the edit.</h2>
-<p>Hi, I’m Ishu. I’m a creative video editor and visual designer focused on making content that feels modern, purposeful, and worth watching. I’m building my experience through real projects, experimenting with new ideas, and constantly improving my craft. Every project is a chance to learn, create, and make the next edit better.</p>
+<p>Hey, I’m Ishu — a video editor who’s early in the journey, but definitely not starting from zero. I’m into sharp cuts, clean transitions, good pacing, and edits that make people stop scrolling. I’ve been turning raw footage and simple ideas into content for real projects while constantly pushing myself to make every edit cleaner, smarter, and more creative. I’m here to learn fast, create better, and build work that actually feels like mine.</p>
 </div>
 </section>
 
@@ -63,7 +65,6 @@ footer{padding:30px 7%;border-top:1px solid var(--line);display:flex;justify-con
 <div class="service"><span>01</span>Video & Reel Editing</div>
 <div class="service"><span>02</span>Social Media Content</div>
 <div class="service"><span>03</span>Promotional Videos</div>
-<div class="service"><span>04</span>Photo & Graphic Design</div>
 </div>
 </section>
 
@@ -72,7 +73,7 @@ footer{padding:30px 7%;border-top:1px solid var(--line);display:flex;justify-con
 <h2 class="title">Projects.</h2>
 <div class="projects">
 <div class="project"><span class="tag">Project 01 · Coming Soon</span><h3>Client Reel</h3></div>
-<div class="project"><span class="tag">Project 02 · Coming Soon</span><h3>Promotional Edit</h3></div>
+<div class="project has-video"><video src="promo-govind-aqua.mp4" muted loop playsinline controls preload="metadata"></video><span class="tag">Project 02</span><h3>Promotional Edit</h3></div>
 <div class="project"><span class="tag">Project 03 · Coming Soon</span><h3>Social Content</h3></div>
 <div class="project"><span class="tag">Project 04 · Coming Soon</span><h3>Creative Visual</h3></div>
 </div>
