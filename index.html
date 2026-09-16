@@ -25,12 +25,18 @@ h1{font-size:clamp(58px,11vw,150px);line-height:.85;letter-spacing:-6px;max-widt
 .aboutgrid p{font-size:22px;color:#bbb;max-width:720px}
 .services{display:grid;grid-template-columns:1fr;border-top:1px solid var(--line)}
 .service{padding:30px 10px;border-bottom:1px solid var(--line);font-size:25px}.service span{display:block;color:#666;font-size:12px;letter-spacing:2px;margin-bottom:8px}
-.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.project{aspect-ratio:16/10;background:linear-gradient(135deg,#171717,#0d0d0d);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:end;padding:25px;position:relative;overflow:hidden}
-.project:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,#3333,transparent 45%)}
-.project video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-.project.has-video:before{background:linear-gradient(to top,#000d,transparent 55%);z-index:1}
-.project>*{position:relative}.tag{font-size:11px;letter-spacing:2px;color:#777;text-transform:uppercase}.project h3{font-size:27px;margin-top:5px}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.project{aspect-ratio:16/10;background:linear-gradient(135deg,#171717,#0d0d0d);border:1px solid var(--line);border-radius:18px;display:flex;flex-direction:column;justify-content:end;padding:25px;position:relative;overflow:hidden;transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s,border-color .5s}
+.project:hover{transform:translateY(-8px);box-shadow:0 24px 60px -12px #000c;border-color:#3a3a3a}
+.project:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,#3333,transparent 45%);z-index:1}
+.project video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .8s cubic-bezier(.2,.8,.2,1),filter .5s}
+.project:hover video{transform:scale(1.08);filter:brightness(.85)}
+.project.has-video:before{background:linear-gradient(to top,#000e,transparent 60%);z-index:1}
+.project>*{position:relative;z-index:2}
+.tag{font-size:11px;letter-spacing:2px;color:#eee;text-transform:uppercase;background:#00000099;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid #ffffff22;padding:6px 12px;border-radius:100px;display:inline-block;width:fit-content}
+.project h3{font-size:27px;margin-top:10px;letter-spacing:-.5px;text-shadow:0 4px 20px #000a}
+.mute-btn{position:absolute;top:18px;right:18px;z-index:3;width:38px;height:38px;border-radius:50%;background:#00000099;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid #ffffff33;color:#fff;font-size:15px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.25s}
+.mute-btn:hover{background:#fff;color:#080808;transform:scale(1.08)}
 .tools{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:35px 0}.tool{font-size:32px;font-weight:700}
 .contact{text-align:center;min-height:70vh;display:flex;flex-direction:column;justify-content:center}.contact .title{margin-bottom:20px}.email{font-size:clamp(20px,3vw,36px);margin:25px 0;color:#ddd}
 footer{padding:30px 7%;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#666;font-size:12px}
@@ -73,7 +79,7 @@ footer{padding:30px 7%;border-top:1px solid var(--line);display:flex;justify-con
 <h2 class="title">Projects.</h2>
 <div class="projects">
 <div class="project"><span class="tag">Project 01 · Coming Soon</span><h3>Client Reel</h3></div>
-<div class="project has-video"><video src="promo-govind-aqua.mp4" muted loop playsinline controls preload="metadata"></video><span class="tag">Project 02</span><h3>Promotional Edit</h3></div>
+<div class="project has-video"><video src="promo-govind-aqua.mp4" autoplay muted loop playsinline preload="metadata"></video><button class="mute-btn" aria-label="Toggle sound" onclick="const v=this.closest('.project').querySelector('video');v.muted=!v.muted;this.textContent=v.muted?'🔇':'🔊'">🔇</button><span class="tag">Project 02</span><h3>Promotional Edit</h3></div>
 <div class="project"><span class="tag">Project 03 · Coming Soon</span><h3>Social Content</h3></div>
 <div class="project"><span class="tag">Project 04 · Coming Soon</span><h3>Creative Visual</h3></div>
 </div>
