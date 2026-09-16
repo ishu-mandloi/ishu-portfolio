@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ishu Mandloi — Creative Portfolio</title>
+<meta name="description" content="Ishu Mandloi — Creative Video Editor & Visual Designer.">
+<style>
+:root{--bg:#080808;--card:#111;--text:#f4f4f4;--muted:#9b9b9b;--line:#252525}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:22px 6%;background:linear-gradient(#080808dd,transparent)}
+.logo{font-weight:800;letter-spacing:2px}.navlinks{display:flex;gap:28px;font-size:14px;color:#bbb}.navlinks a:hover{color:white}
+section{padding:110px 7%;max-width:1400px;margin:auto}
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:150px}
+.eyebrow{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:#888;margin-bottom:25px}
+h1{font-size:clamp(58px,11vw,150px);line-height:.85;letter-spacing:-6px;max-width:1100px}
+.hero p{max-width:620px;color:#aaa;font-size:18px;margin:38px 0}
+.btn{display:inline-block;border:1px solid #555;padding:13px 21px;border-radius:100px;font-size:14px;transition:.25s}.btn:hover{background:white;color:#080808}
+.scroll{margin-top:80px;color:#666;font-size:12px;letter-spacing:3px}
+.title{font-size:clamp(38px,6vw,76px);letter-spacing:-3px;margin-bottom:45px}
+.aboutgrid{display:grid;grid-template-columns:1fr 1.4fr;gap:70px;border-top:1px solid var(--line);padding-top:35px}
+.aboutgrid p{font-size:22px;color:#bbb;max-width:720px}
+.services{display:grid;grid-template-columns:1fr;border-top:1px solid var(--line)}
+.service{padding:30px 10px;border-bottom:1px solid var(--line);font-size:25px}.service span{display:block;color:#666;font-size:12px;letter-spacing:2px;margin-bottom:8px}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.project{aspect-ratio:16/10;background:linear-gradient(135deg,#171717,#0d0d0d);border:1px solid var(--line);border-radius:18px;display:flex;flex-direction:column;justify-content:end;padding:25px;position:relative;overflow:hidden;transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s,border-color .5s}
+.project:hover{transform:translateY(-8px);box-shadow:0 24px 60px -12px #000c;border-color:#3a3a3a}
+.project:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,#3333,transparent 45%);z-index:1}
+.project video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .8s cubic-bezier(.2,.8,.2,1),filter .5s}
+.project:hover video{transform:scale(1.08);filter:brightness(.85)}
+.project.has-video:before{background:linear-gradient(to top,#000e,transparent 60%);z-index:1}
+.project>*{position:relative;z-index:2}
+.tag{font-size:11px;letter-spacing:2px;color:#eee;text-transform:uppercase;background:#00000099;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid #ffffff22;padding:6px 12px;border-radius:100px;display:inline-block;width:fit-content}
+.project h3{font-size:27px;margin-top:10px;letter-spacing:-.5px;text-shadow:0 4px 20px #000a}
+.mute-btn{position:absolute;top:18px;right:18px;z-index:3;width:38px;height:38px;border-radius:50%;background:#00000099;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid #ffffff33;color:#fff;font-size:15px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.25s}
+.mute-btn:hover{background:#fff;color:#080808;transform:scale(1.08)}
+.expand-btn{position:absolute;top:18px;left:18px;z-index:3;width:38px;height:38px;border-radius:50%;background:#00000099;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid #ffffff33;color:#fff;font-size:15px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.25s}
+.expand-btn:hover{background:#fff;color:#080808;transform:scale(1.08)}
+.video-modal{position:fixed;inset:0;background:#000000e8;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;z-index:1000;padding:50px 20px}
+.video-modal.open{display:flex}
+.video-modal video{max-width:100%;max-height:88vh;border-radius:16px;box-shadow:0 40px 90px -20px #000d}
+.video-modal-close{position:absolute;top:26px;right:30px;width:44px;height:44px;border-radius:50%;background:#ffffff15;border:1px solid #ffffff33;color:#fff;font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.25s}
+.video-modal-close:hover{background:#fff;color:#080808;transform:scale(1.08)}
+.tools{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:35px 0}.tool{font-size:32px;font-weight:700}
+.contact{text-align:center;min-height:70vh;display:flex;flex-direction:column;justify-content:center}.contact .title{margin-bottom:20px}.email{font-size:clamp(20px,3vw,36px);margin:25px 0;color:#ddd}
+footer{padding:30px 7%;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#666;font-size:12px}
+@media(max-width:700px){.navlinks{display:none}section{padding:85px 6%}.hero{padding-top:100px}h1{letter-spacing:-3px}.aboutgrid,.projects{grid-template-columns:1fr;gap:30px}.aboutgrid p{font-size:18px}.service{font-size:22px}.tools{display:block}.tool{margin:12px 0}footer{display:block}footer div+div{margin-top:8px}}
+</style>
+</head>
+<body>
+<nav><a class="logo" href="#">ISHU.</a><div class="navlinks"><a href="#about">About</a><a href="#work">Work</a><a href="#services">Services</a><a href="#contact">Contact</a></div></nav>
+
+<section class="hero">
+<div>
+<div class="eyebrow">Creative Video Editor · Visual Designer</div>
+<h1>ISHU<br>MANDLOI.</h1>
+<p>I turn raw ideas into clean, engaging visuals — from short-form reels to promotional content and creative designs.</p>
+<a class="btn" href="#work">Explore my work ↓</a>
+<div class="scroll">SCROLL TO EXPLORE</div>
+</div>
+</section>
+
+<section id="about">
+<div class="eyebrow">01 — About</div>
+<div class="aboutgrid">
+<h2 class="title">A creative mind<br>behind the edit.</h2>
+<p>Hey, I’m Ishu — a video editor who’s early in the journey, but definitely not starting from zero. I’m into sharp cuts, clean transitions, good pacing, and edits that make people stop scrolling. I’ve been turning raw footage and simple ideas into content for real projects while constantly pushing myself to make every edit cleaner, smarter, and more creative. I’m here to learn fast, create better, and build work that actually feels like mine.</p>
+</div>
+</section>
+
+<section id="services">
+<div class="eyebrow">02 — What I Do</div>
+<h2 class="title">Services.</h2>
+<div class="services">
+<div class="service"><span>01</span>Video & Reel Editing</div>
+<div class="service"><span>02</span>Social Media Content</div>
+<div class="service"><span>03</span>Promotional Videos</div>
+</div>
+</section>
+
+<section id="work">
+<div class="eyebrow">03 — Selected Work</div>
+<h2 class="title">Projects.</h2>
+<div class="projects">
+<div class="project"><span class="tag">Project 01 · Coming Soon</span><h3>Client Reel</h3></div>
+<div class="project has-video"><video src="promo-govind-aqua.mp4" autoplay muted loop playsinline preload="metadata"></video><button class="expand-btn" aria-label="View full video" onclick="openVideoModal('promo-govind-aqua.mp4')">⤢</button><button class="mute-btn" aria-label="Toggle sound" onclick="const v=this.closest('.project').querySelector('video');v.muted=!v.muted;this.textContent=v.muted?'🔇':'🔊'">🔇</button><span class="tag">Project 02</span><h3>Promotional Edit</h3></div>
+<div class="project"><span class="tag">Project 03 · Coming Soon</span><h3>Social Content</h3></div>
+<div class="project"><span class="tag">Project 04 · Coming Soon</span><h3>Creative Visual</h3></div>
+</div>
+</section>
+
+<section>
+<div class="eyebrow">04 — Tools</div>
+<div class="tools"><div class="tool">CAPCUT</div><div style="color:#777">Current primary editing tool</div></div>
+</section>
+
+<section id="contact" class="contact">
+<div class="eyebrow">05 — Let's Work Together</div>
+<h2 class="title">Have an idea?<br>Let's create it.</h2>
+<div class="email">createwithishu@gmail.com</div>
+<div>
+<a class="btn" href="https://instagram.com/ishuufr" target="_blank">Personal Instagram</a>
+<a class="btn" href="https://instagram.com/chitrix.studio" target="_blank">Chitrix Studio</a>
+</div>
+</section>
+
+<footer><div>© 2026 ISHU MANDLOI</div><div>VIDEO · DESIGN · CREATIVITY</div></footer>
+<div class="video-modal" id="videoModal"><button class="video-modal-close" aria-label="Close" onclick="closeVideoModal()">✕</button><video id="modalVideo" controls playsinline></video></div>
+<script>
+function openVideoModal(src){
+  const m=document.getElementById('videoModal');
+  const v=document.getElementById('modalVideo');
+  v.src=src;
+  m.classList.add('open');
+  v.play();
+}
+function closeVideoModal(){
+  const m=document.getElementById('videoModal');
+  const v=document.getElementById('modalVideo');
+  v.pause();
+  v.removeAttribute('src');
+  v.load();
+  m.classList.remove('open');
+}
+document.getElementById('videoModal').addEventListener('click',function(e){
+  if(e.target.id==='videoModal') closeVideoModal();
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape') closeVideoModal();
+});
+</script>
+</body>
+</html>
